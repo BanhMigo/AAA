@@ -53,7 +53,7 @@
             highlightLayer.openPopup();
         }
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:10
+            zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[33.687436346664214,-84.58449721710721],[33.83806225037587,-84.24782574805029]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -81,7 +81,7 @@
             pane: 'pane_ESRIGraylight_0',
             opacity: 1.0,
             attribution: '',
-            minZoom: 10,
+            minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
             maxNativeZoom: 20
@@ -112,15 +112,10 @@
         function style_CoAMask_1_0() {
             return {
                 pane: 'pane_CoAMask_1',
-                opacity: 1,
-                color: 'rgba(255,255,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
+                stroke: false, 
                 fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,255,1.0)',
+                fillOpacity: .33,
+                fillColor: 'rgba(247,168,136,1.0)',
                 interactive: false,
             }
         }
@@ -645,7 +640,7 @@
                 lineJoin: 'round',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_PedestrianStreetsMask_5');
@@ -653,7 +648,7 @@
         map.getPane('pane_PedestrianStreetsMask_5').style['mix-blend-mode'] = 'normal';
         var layer_PedestrianStreetsMask_5 = new L.geoJson(json_PedestrianStreetsMask_5, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_PedestrianStreetsMask_5',
             layerName: 'layer_PedestrianStreetsMask_5',
             pane: 'pane_PedestrianStreetsMask_5',
@@ -750,7 +745,7 @@
                 lineJoin: 'round',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_OtherAAAMask_6');
@@ -758,7 +753,7 @@
         map.getPane('pane_OtherAAAMask_6').style['mix-blend-mode'] = 'normal';
         var layer_OtherAAAMask_6 = new L.geoJson(json_OtherAAAMask_6, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_OtherAAAMask_6',
             layerName: 'layer_OtherAAAMask_6',
             pane: 'pane_OtherAAAMask_6',
@@ -843,7 +838,7 @@
                 lineJoin: 'bevel',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_ExistingAAAMask_7');
@@ -851,7 +846,7 @@
         map.getPane('pane_ExistingAAAMask_7').style['mix-blend-mode'] = 'normal';
         var layer_ExistingAAAMask_7 = new L.geoJson(json_ExistingAAAMask_7, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_ExistingAAAMask_7',
             layerName: 'layer_ExistingAAAMask_7',
             pane: 'pane_ExistingAAAMask_7',
@@ -894,7 +889,7 @@
                 lineJoin: 'round',
                 weight: 3.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_PedestrianandTransitOrientedStreets_8');
@@ -902,7 +897,7 @@
         map.getPane('pane_PedestrianandTransitOrientedStreets_8').style['mix-blend-mode'] = 'normal';
         var layer_PedestrianandTransitOrientedStreets_8 = new L.geoJson(json_PedestrianandTransitOrientedStreets_8, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_PedestrianandTransitOrientedStreets_8',
             layerName: 'layer_PedestrianandTransitOrientedStreets_8',
             pane: 'pane_PedestrianandTransitOrientedStreets_8',
@@ -1330,7 +1325,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_12.png" /> Existing AAA Routes': layer_ExistingAAARoutes_12,'<img src="legend/UnderConstructionAAARoutes_11.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_11,'<img src="legend/FundedAAARoutes_10.png" /> Funded AAA Routes': layer_FundedAAARoutes_10,'<img src="legend/OtherProposedAAAApprox_9.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_9,'<img src="legend/PedestrianandTransitOrientedStreets_8.png" /> Recommended Pedestrian & Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_8,'<img src="legend/ExistingAAAMask_7.png" /> Existing AAA Mask': layer_ExistingAAAMask_7,'<img src="legend/OtherAAAMask_6.png" /> Other AAA Mask': layer_OtherAAAMask_6,'<img src="legend/PedestrianStreetsMask_5.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_12.png" /> Existing AAA Routes': layer_ExistingAAARoutes_12,'<img src="legend/UnderConstructionAAARoutes_11.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_11,'<img src="legend/FundedAAARoutes_10.png" /> Funded AAA Routes': layer_FundedAAARoutes_10,'<img src="legend/OtherProposedAAAApprox_9.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_9,'<img src="legend/PedestrianandTransitOrientedStreets_8.png" /> Pedestrian and Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_8,'<img src="legend/ExistingAAAMask_7.png" /> Existing AAA Mask': layer_ExistingAAAMask_7,'<img src="legend/OtherAAAMask_6.png" /> Other AAA Mask': layer_OtherAAAMask_6,'<img src="legend/PedestrianStreetsMask_5.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>

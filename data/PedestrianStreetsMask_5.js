@@ -81,6 +81,13 @@ var json_PedestrianStreetsMask_5 = {
 { "type": "Feature", "properties": { "id": "26", "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.39371964857574, 33.797761734009626 ], [ -84.39371964857574, 33.797761734009626 ], [ -84.397045612453695, 33.794204169403045 ] ] ] } },
 { "type": "Feature", "properties": { "id": "29", "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.37109650813855, 33.822660545845245 ], [ -84.367342449900093, 33.822414329340965 ] ] ] } },
 { "type": "Feature", "properties": { "id": "30", "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.396467800006761, 33.751846464762039 ], [ -84.393495993710687, 33.750363903893422 ] ] ] } },
-{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.402583783372464, 33.75053270137365 ], [ -84.40288249457916, 33.750760020706345 ] ] ] } }
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.402583783372464, 33.75053270137365 ], [ -84.40288249457916, 33.750760020706345 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.355688627046561, 33.750691520575671 ], [ -84.355700348929986, 33.750233442723086 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.354211669736713, 33.750184710892633 ], [ -84.354229252561808, 33.749828967691272 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Shared" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.349904565326597, 33.758312753351007 ], [ -84.349273196196378, 33.757542132417434 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.35562153652846, 33.750680892389944 ], [ -84.355103175755872, 33.750219107780538 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.354969882985756, 33.75013290771134 ], [ -84.354310824289186, 33.749769635039101 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.36812063810757, 33.748054245527541 ], [ -84.368068418920984, 33.750254146345156 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null, "Type": "Open" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.363046565704835, 33.747930397167572 ], [ -84.363054938478683, 33.747925755917407 ], [ -84.362856782830562, 33.748187986157916 ] ] ] } }
 ]
 }
