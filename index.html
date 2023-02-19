@@ -589,7 +589,7 @@
                 lineJoin: 'round',
                 weight: 3.0,
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_ConventialLane_4');
@@ -597,7 +597,7 @@
         map.getPane('pane_ConventialLane_4').style['mix-blend-mode'] = 'normal';
         var layer_ConventialLane_4 = new L.geoJson(json_ConventialLane_4, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_ConventialLane_4',
             layerName: 'layer_ConventialLane_4',
             pane: 'pane_ConventialLane_4',
@@ -1324,6 +1324,8 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_12.png" /> Existing AAA Routes': layer_ExistingAAARoutes_12,'<img src="legend/UnderConstructionAAARoutes_11.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_11,'<img src="legend/FundedAAARoutes_10.png" /> Funded AAA Routes': layer_FundedAAARoutes_10,'<img src="legend/OtherProposedAAAApprox_9.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_9,'<img src="legend/PedestrianandTransitOrientedStreets_8.png" /> Pedestrian and Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_8,'<img src="legend/ExistingAAAMask_7.png" /> Existing AAA Mask': layer_ExistingAAAMask_7,'<img src="legend/OtherAAAMask_6.png" /> Other AAA Mask': layer_OtherAAAMask_6,'<img src="legend/PedestrianStreetsMask_5.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,}).addTo(map);
         setBounds();
         </script>
     </body>
