@@ -54,7 +54,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:10
-        })
+        }).fitBounds([[33.687436346664214,-84.58449721710721],[33.83806225037587,-84.24782574805029]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -73,9 +73,6 @@
         .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
-            if (bounds_group.getLayers().length) {
-                map.fitBounds(bounds_group.getBounds());
-            }
             map.setMaxBounds(map.getBounds());
         }
         map.createPane('pane_ESRIGraylight_0');
@@ -117,9 +114,9 @@
                 pane: 'pane_CoAMask_1',
                 stroke: false, 
                 fill: true,
-                fillOpacity: 0.33,
+                fillOpacity: 0.33
                 fillColor: 'rgba(247,168,136,1.0)',
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_CoAMask_1');
@@ -127,7 +124,7 @@
         map.getPane('pane_CoAMask_1').style['mix-blend-mode'] = 'normal';
         var layer_CoAMask_1 = new L.geoJson(json_CoAMask_1, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_CoAMask_1',
             layerName: 'layer_CoAMask_1',
             pane: 'pane_CoAMask_1',
@@ -218,7 +215,7 @@
                 lineJoin: 'bevel',
                 weight: 4.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_MARTARailLines_2');
@@ -226,7 +223,7 @@
         map.getPane('pane_MARTARailLines_2').style['mix-blend-mode'] = 'normal';
         var layer_MARTARailLines_2 = new L.geoJson(json_MARTARailLines_2, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_MARTARailLines_2',
             layerName: 'layer_MARTARailLines_2',
             pane: 'pane_MARTARailLines_2',
@@ -532,7 +529,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(66,189,0,0.5)',
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_Parks_3');
@@ -540,7 +537,7 @@
         map.getPane('pane_Parks_3').style['mix-blend-mode'] = 'normal';
         var layer_Parks_3 = new L.geoJson(json_Parks_3, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_Parks_3',
             layerName: 'layer_Parks_3',
             pane: 'pane_Parks_3',
@@ -643,7 +640,7 @@
                 lineJoin: 'round',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_PedestrianStreetsMask_5');
@@ -651,7 +648,7 @@
         map.getPane('pane_PedestrianStreetsMask_5').style['mix-blend-mode'] = 'normal';
         var layer_PedestrianStreetsMask_5 = new L.geoJson(json_PedestrianStreetsMask_5, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_PedestrianStreetsMask_5',
             layerName: 'layer_PedestrianStreetsMask_5',
             pane: 'pane_PedestrianStreetsMask_5',
@@ -748,7 +745,7 @@
                 lineJoin: 'round',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_OtherAAAMask_6');
@@ -756,7 +753,7 @@
         map.getPane('pane_OtherAAAMask_6').style['mix-blend-mode'] = 'normal';
         var layer_OtherAAAMask_6 = new L.geoJson(json_OtherAAAMask_6, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_OtherAAAMask_6',
             layerName: 'layer_OtherAAAMask_6',
             pane: 'pane_OtherAAAMask_6',
@@ -841,7 +838,7 @@
                 lineJoin: 'bevel',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_ExistingAAAMask_7');
@@ -849,7 +846,7 @@
         map.getPane('pane_ExistingAAAMask_7').style['mix-blend-mode'] = 'normal';
         var layer_ExistingAAAMask_7 = new L.geoJson(json_ExistingAAAMask_7, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_ExistingAAAMask_7',
             layerName: 'layer_ExistingAAAMask_7',
             pane: 'pane_ExistingAAAMask_7',
