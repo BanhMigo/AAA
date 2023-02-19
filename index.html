@@ -38,14 +38,15 @@
         <script src="data/MARTARailLines_2.js"></script>
         <script src="data/Parks_3.js"></script>
         <script src="data/ConventialLane_4.js"></script>
-        <script src="data/PedestrianStreetsMask_5.js"></script>
-        <script src="data/OtherAAAMask_6.js"></script>
-        <script src="data/ExistingAAAMask_7.js"></script>
-        <script src="data/PedestrianandTransitOrientedStreets_8.js"></script>
-        <script src="data/OtherProposedAAAApprox_9.js"></script>
-        <script src="data/FundedAAARoutes_10.js"></script>
-        <script src="data/UnderConstructionAAARoutes_11.js"></script>
-        <script src="data/ExistingAAARoutes_12.js"></script>
+        <script src="data/Schools_5.js"></script>
+        <script src="data/PedestrianStreetsMask_6.js"></script>
+        <script src="data/OtherAAAMask_7.js"></script>
+        <script src="data/ExistingAAAMask_8.js"></script>
+        <script src="data/PedestrianandTransitOrientedStreets_9.js"></script>
+        <script src="data/OtherProposedAAAApprox_10.js"></script>
+        <script src="data/FundedAAARoutes_11.js"></script>
+        <script src="data/UnderConstructionAAARoutes_12.js"></script>
+        <script src="data/ExistingAAARoutes_13.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -54,7 +55,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:10
-        }).fitBounds([[33.687436346664214,-84.58449721710721],[33.83806225037587,-84.24782574805029]]);
+        })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -73,6 +74,9 @@
         .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
             map.setMaxBounds(map.getBounds());
         }
         map.createPane('pane_ESRIGraylight_0');
@@ -114,7 +118,7 @@
                 pane: 'pane_CoAMask_1',
                 stroke: false, 
                 fill: true,
-                fillOpacity: .33,
+                fillOpacity: 0.33
                 fillColor: 'rgba(247,168,136,1.0)',
                 interactive: false,
             }
@@ -215,7 +219,7 @@
                 lineJoin: 'bevel',
                 weight: 4.0,
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_MARTARailLines_2');
@@ -223,7 +227,7 @@
         map.getPane('pane_MARTARailLines_2').style['mix-blend-mode'] = 'normal';
         var layer_MARTARailLines_2 = new L.geoJson(json_MARTARailLines_2, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_MARTARailLines_2',
             layerName: 'layer_MARTARailLines_2',
             pane: 'pane_MARTARailLines_2',
@@ -606,7 +610,163 @@
         });
         bounds_group.addLayer(layer_ConventialLane_4);
         map.addLayer(layer_ConventialLane_4);
-        function pop_PedestrianStreetsMask_5(feature, layer) {
+        function pop_Schools_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FACNAME'] !== null ? autolinker.link(feature.properties['FACNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FACTYPE'] !== null ? autolinker.link(feature.properties['FACTYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDRESS_1'] !== null ? autolinker.link(feature.properties['ADDRESS_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDRESS_2'] !== null ? autolinker.link(feature.properties['ADDRESS_2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CITY'] !== null ? autolinker.link(feature.properties['CITY'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATE'] !== null ? autolinker.link(feature.properties['STATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ZIP'] !== null ? autolinker.link(feature.properties['ZIP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREACODE'] !== null ? autolinker.link(feature.properties['AREACODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PHONE'] !== null ? autolinker.link(feature.properties['PHONE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CONTACT'] !== null ? autolinker.link(feature.properties['CONTACT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITLE'] !== null ? autolinker.link(feature.properties['TITLE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FIPS'] !== null ? autolinker.link(feature.properties['FIPS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TYPE_'] !== null ? autolinker.link(feature.properties['TYPE_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['METHOD'] !== null ? autolinker.link(feature.properties['METHOD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['updated'] !== null ? autolinker.link(feature.properties['updated'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['draw'] !== null ? autolinker.link(feature.properties['draw'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GlobalID'] !== null ? autolinker.link(feature.properties['GlobalID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['last_edited_date'] !== null ? autolinker.link(feature.properties['last_edited_date'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Schools_5_0(feature) {
+            switch(String(feature.properties['TYPE_'])) {
+                default:
+                    return {
+                pane: 'pane_Schools_5',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Elementary School':
+                    return {
+                pane: 'pane_Schools_5',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,215,31,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Middle School':
+                    return {
+                pane: 'pane_Schools_5',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,155,31,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'High School, Public':
+                    return {
+                pane: 'pane_Schools_5',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,57,31,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Private School':
+                    return {
+                pane: 'pane_Schools_5',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,31,155,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Schools_5');
+        map.getPane('pane_Schools_5').style.zIndex = 405;
+        map.getPane('pane_Schools_5').style['mix-blend-mode'] = 'normal';
+        var layer_Schools_5 = new L.geoJson(json_Schools_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Schools_5',
+            layerName: 'layer_Schools_5',
+            pane: 'pane_Schools_5',
+            onEachFeature: pop_Schools_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Schools_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Schools_5);
+        function pop_PedestrianStreetsMask_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -630,9 +790,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_PedestrianStreetsMask_5_0() {
+        function style_PedestrianStreetsMask_6_0() {
             return {
-                pane: 'pane_PedestrianStreetsMask_5',
+                pane: 'pane_PedestrianStreetsMask_6',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
@@ -640,24 +800,24 @@
                 lineJoin: 'round',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
-        map.createPane('pane_PedestrianStreetsMask_5');
-        map.getPane('pane_PedestrianStreetsMask_5').style.zIndex = 405;
-        map.getPane('pane_PedestrianStreetsMask_5').style['mix-blend-mode'] = 'normal';
-        var layer_PedestrianStreetsMask_5 = new L.geoJson(json_PedestrianStreetsMask_5, {
+        map.createPane('pane_PedestrianStreetsMask_6');
+        map.getPane('pane_PedestrianStreetsMask_6').style.zIndex = 406;
+        map.getPane('pane_PedestrianStreetsMask_6').style['mix-blend-mode'] = 'normal';
+        var layer_PedestrianStreetsMask_6 = new L.geoJson(json_PedestrianStreetsMask_6, {
             attribution: '',
-            interactive: true,
-            dataVar: 'json_PedestrianStreetsMask_5',
-            layerName: 'layer_PedestrianStreetsMask_5',
-            pane: 'pane_PedestrianStreetsMask_5',
-            onEachFeature: pop_PedestrianStreetsMask_5,
-            style: style_PedestrianStreetsMask_5_0,
+            interactive: false,
+            dataVar: 'json_PedestrianStreetsMask_6',
+            layerName: 'layer_PedestrianStreetsMask_6',
+            pane: 'pane_PedestrianStreetsMask_6',
+            onEachFeature: pop_PedestrianStreetsMask_6,
+            style: style_PedestrianStreetsMask_6_0,
         });
-        bounds_group.addLayer(layer_PedestrianStreetsMask_5);
-        map.addLayer(layer_PedestrianStreetsMask_5);
-        function pop_OtherAAAMask_6(feature, layer) {
+        bounds_group.addLayer(layer_PedestrianStreetsMask_6);
+        map.addLayer(layer_PedestrianStreetsMask_6);
+        function pop_OtherAAAMask_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -735,9 +895,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_OtherAAAMask_6_0() {
+        function style_OtherAAAMask_7_0() {
             return {
-                pane: 'pane_OtherAAAMask_6',
+                pane: 'pane_OtherAAAMask_7',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
@@ -745,24 +905,24 @@
                 lineJoin: 'round',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
-        map.createPane('pane_OtherAAAMask_6');
-        map.getPane('pane_OtherAAAMask_6').style.zIndex = 406;
-        map.getPane('pane_OtherAAAMask_6').style['mix-blend-mode'] = 'normal';
-        var layer_OtherAAAMask_6 = new L.geoJson(json_OtherAAAMask_6, {
+        map.createPane('pane_OtherAAAMask_7');
+        map.getPane('pane_OtherAAAMask_7').style.zIndex = 407;
+        map.getPane('pane_OtherAAAMask_7').style['mix-blend-mode'] = 'normal';
+        var layer_OtherAAAMask_7 = new L.geoJson(json_OtherAAAMask_7, {
             attribution: '',
-            interactive: true,
-            dataVar: 'json_OtherAAAMask_6',
-            layerName: 'layer_OtherAAAMask_6',
-            pane: 'pane_OtherAAAMask_6',
-            onEachFeature: pop_OtherAAAMask_6,
-            style: style_OtherAAAMask_6_0,
+            interactive: false,
+            dataVar: 'json_OtherAAAMask_7',
+            layerName: 'layer_OtherAAAMask_7',
+            pane: 'pane_OtherAAAMask_7',
+            onEachFeature: pop_OtherAAAMask_7,
+            style: style_OtherAAAMask_7_0,
         });
-        bounds_group.addLayer(layer_OtherAAAMask_6);
-        map.addLayer(layer_OtherAAAMask_6);
-        function pop_ExistingAAAMask_7(feature, layer) {
+        bounds_group.addLayer(layer_OtherAAAMask_7);
+        map.addLayer(layer_OtherAAAMask_7);
+        function pop_ExistingAAAMask_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -828,9 +988,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ExistingAAAMask_7_0() {
+        function style_ExistingAAAMask_8_0() {
             return {
-                pane: 'pane_ExistingAAAMask_7',
+                pane: 'pane_ExistingAAAMask_8',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
@@ -838,24 +998,24 @@
                 lineJoin: 'bevel',
                 weight: 8.0,
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
-        map.createPane('pane_ExistingAAAMask_7');
-        map.getPane('pane_ExistingAAAMask_7').style.zIndex = 407;
-        map.getPane('pane_ExistingAAAMask_7').style['mix-blend-mode'] = 'normal';
-        var layer_ExistingAAAMask_7 = new L.geoJson(json_ExistingAAAMask_7, {
+        map.createPane('pane_ExistingAAAMask_8');
+        map.getPane('pane_ExistingAAAMask_8').style.zIndex = 408;
+        map.getPane('pane_ExistingAAAMask_8').style['mix-blend-mode'] = 'normal';
+        var layer_ExistingAAAMask_8 = new L.geoJson(json_ExistingAAAMask_8, {
             attribution: '',
-            interactive: true,
-            dataVar: 'json_ExistingAAAMask_7',
-            layerName: 'layer_ExistingAAAMask_7',
-            pane: 'pane_ExistingAAAMask_7',
-            onEachFeature: pop_ExistingAAAMask_7,
-            style: style_ExistingAAAMask_7_0,
+            interactive: false,
+            dataVar: 'json_ExistingAAAMask_8',
+            layerName: 'layer_ExistingAAAMask_8',
+            pane: 'pane_ExistingAAAMask_8',
+            onEachFeature: pop_ExistingAAAMask_8,
+            style: style_ExistingAAAMask_8_0,
         });
-        bounds_group.addLayer(layer_ExistingAAAMask_7);
-        map.addLayer(layer_ExistingAAAMask_7);
-        function pop_PedestrianandTransitOrientedStreets_8(feature, layer) {
+        bounds_group.addLayer(layer_ExistingAAAMask_8);
+        map.addLayer(layer_ExistingAAAMask_8);
+        function pop_PedestrianandTransitOrientedStreets_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -879,9 +1039,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_PedestrianandTransitOrientedStreets_8_0() {
+        function style_PedestrianandTransitOrientedStreets_9_0() {
             return {
-                pane: 'pane_PedestrianandTransitOrientedStreets_8',
+                pane: 'pane_PedestrianandTransitOrientedStreets_9',
                 opacity: 1,
                 color: 'rgba(235,81,0,1.0)',
                 dashArray: '',
@@ -892,21 +1052,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_PedestrianandTransitOrientedStreets_8');
-        map.getPane('pane_PedestrianandTransitOrientedStreets_8').style.zIndex = 408;
-        map.getPane('pane_PedestrianandTransitOrientedStreets_8').style['mix-blend-mode'] = 'normal';
-        var layer_PedestrianandTransitOrientedStreets_8 = new L.geoJson(json_PedestrianandTransitOrientedStreets_8, {
+        map.createPane('pane_PedestrianandTransitOrientedStreets_9');
+        map.getPane('pane_PedestrianandTransitOrientedStreets_9').style.zIndex = 409;
+        map.getPane('pane_PedestrianandTransitOrientedStreets_9').style['mix-blend-mode'] = 'normal';
+        var layer_PedestrianandTransitOrientedStreets_9 = new L.geoJson(json_PedestrianandTransitOrientedStreets_9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_PedestrianandTransitOrientedStreets_8',
-            layerName: 'layer_PedestrianandTransitOrientedStreets_8',
-            pane: 'pane_PedestrianandTransitOrientedStreets_8',
-            onEachFeature: pop_PedestrianandTransitOrientedStreets_8,
-            style: style_PedestrianandTransitOrientedStreets_8_0,
+            dataVar: 'json_PedestrianandTransitOrientedStreets_9',
+            layerName: 'layer_PedestrianandTransitOrientedStreets_9',
+            pane: 'pane_PedestrianandTransitOrientedStreets_9',
+            onEachFeature: pop_PedestrianandTransitOrientedStreets_9,
+            style: style_PedestrianandTransitOrientedStreets_9_0,
         });
-        bounds_group.addLayer(layer_PedestrianandTransitOrientedStreets_8);
-        map.addLayer(layer_PedestrianandTransitOrientedStreets_8);
-        function pop_OtherProposedAAAApprox_9(feature, layer) {
+        bounds_group.addLayer(layer_PedestrianandTransitOrientedStreets_9);
+        map.addLayer(layer_PedestrianandTransitOrientedStreets_9);
+        function pop_OtherProposedAAAApprox_10(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -984,9 +1144,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_OtherProposedAAAApprox_9_0() {
+        function style_OtherProposedAAAApprox_10_0() {
             return {
-                pane: 'pane_OtherProposedAAAApprox_9',
+                pane: 'pane_OtherProposedAAAApprox_10',
                 opacity: 1,
                 color: 'rgba(159,159,159,1.0)',
                 dashArray: '',
@@ -997,21 +1157,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_OtherProposedAAAApprox_9');
-        map.getPane('pane_OtherProposedAAAApprox_9').style.zIndex = 409;
-        map.getPane('pane_OtherProposedAAAApprox_9').style['mix-blend-mode'] = 'normal';
-        var layer_OtherProposedAAAApprox_9 = new L.geoJson(json_OtherProposedAAAApprox_9, {
+        map.createPane('pane_OtherProposedAAAApprox_10');
+        map.getPane('pane_OtherProposedAAAApprox_10').style.zIndex = 410;
+        map.getPane('pane_OtherProposedAAAApprox_10').style['mix-blend-mode'] = 'normal';
+        var layer_OtherProposedAAAApprox_10 = new L.geoJson(json_OtherProposedAAAApprox_10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_OtherProposedAAAApprox_9',
-            layerName: 'layer_OtherProposedAAAApprox_9',
-            pane: 'pane_OtherProposedAAAApprox_9',
-            onEachFeature: pop_OtherProposedAAAApprox_9,
-            style: style_OtherProposedAAAApprox_9_0,
+            dataVar: 'json_OtherProposedAAAApprox_10',
+            layerName: 'layer_OtherProposedAAAApprox_10',
+            pane: 'pane_OtherProposedAAAApprox_10',
+            onEachFeature: pop_OtherProposedAAAApprox_10,
+            style: style_OtherProposedAAAApprox_10_0,
         });
-        bounds_group.addLayer(layer_OtherProposedAAAApprox_9);
-        map.addLayer(layer_OtherProposedAAAApprox_9);
-        function pop_FundedAAARoutes_10(feature, layer) {
+        bounds_group.addLayer(layer_OtherProposedAAAApprox_10);
+        map.addLayer(layer_OtherProposedAAAApprox_10);
+        function pop_FundedAAARoutes_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1089,9 +1249,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_FundedAAARoutes_10_0() {
+        function style_FundedAAARoutes_11_0() {
             return {
-                pane: 'pane_FundedAAARoutes_10',
+                pane: 'pane_FundedAAARoutes_11',
                 opacity: 1,
                 color: 'rgba(165,3,225,1.0)',
                 dashArray: '',
@@ -1102,21 +1262,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_FundedAAARoutes_10');
-        map.getPane('pane_FundedAAARoutes_10').style.zIndex = 410;
-        map.getPane('pane_FundedAAARoutes_10').style['mix-blend-mode'] = 'normal';
-        var layer_FundedAAARoutes_10 = new L.geoJson(json_FundedAAARoutes_10, {
+        map.createPane('pane_FundedAAARoutes_11');
+        map.getPane('pane_FundedAAARoutes_11').style.zIndex = 411;
+        map.getPane('pane_FundedAAARoutes_11').style['mix-blend-mode'] = 'normal';
+        var layer_FundedAAARoutes_11 = new L.geoJson(json_FundedAAARoutes_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_FundedAAARoutes_10',
-            layerName: 'layer_FundedAAARoutes_10',
-            pane: 'pane_FundedAAARoutes_10',
-            onEachFeature: pop_FundedAAARoutes_10,
-            style: style_FundedAAARoutes_10_0,
+            dataVar: 'json_FundedAAARoutes_11',
+            layerName: 'layer_FundedAAARoutes_11',
+            pane: 'pane_FundedAAARoutes_11',
+            onEachFeature: pop_FundedAAARoutes_11,
+            style: style_FundedAAARoutes_11_0,
         });
-        bounds_group.addLayer(layer_FundedAAARoutes_10);
-        map.addLayer(layer_FundedAAARoutes_10);
-        function pop_UnderConstructionAAARoutes_11(feature, layer) {
+        bounds_group.addLayer(layer_FundedAAARoutes_11);
+        map.addLayer(layer_FundedAAARoutes_11);
+        function pop_UnderConstructionAAARoutes_12(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1194,9 +1354,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_UnderConstructionAAARoutes_11_0() {
+        function style_UnderConstructionAAARoutes_12_0() {
             return {
-                pane: 'pane_UnderConstructionAAARoutes_11',
+                pane: 'pane_UnderConstructionAAARoutes_12',
                 opacity: 1,
                 color: 'rgba(253,166,0,1.0)',
                 dashArray: '',
@@ -1207,21 +1367,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_UnderConstructionAAARoutes_11');
-        map.getPane('pane_UnderConstructionAAARoutes_11').style.zIndex = 411;
-        map.getPane('pane_UnderConstructionAAARoutes_11').style['mix-blend-mode'] = 'normal';
-        var layer_UnderConstructionAAARoutes_11 = new L.geoJson(json_UnderConstructionAAARoutes_11, {
+        map.createPane('pane_UnderConstructionAAARoutes_12');
+        map.getPane('pane_UnderConstructionAAARoutes_12').style.zIndex = 412;
+        map.getPane('pane_UnderConstructionAAARoutes_12').style['mix-blend-mode'] = 'normal';
+        var layer_UnderConstructionAAARoutes_12 = new L.geoJson(json_UnderConstructionAAARoutes_12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_UnderConstructionAAARoutes_11',
-            layerName: 'layer_UnderConstructionAAARoutes_11',
-            pane: 'pane_UnderConstructionAAARoutes_11',
-            onEachFeature: pop_UnderConstructionAAARoutes_11,
-            style: style_UnderConstructionAAARoutes_11_0,
+            dataVar: 'json_UnderConstructionAAARoutes_12',
+            layerName: 'layer_UnderConstructionAAARoutes_12',
+            pane: 'pane_UnderConstructionAAARoutes_12',
+            onEachFeature: pop_UnderConstructionAAARoutes_12,
+            style: style_UnderConstructionAAARoutes_12_0,
         });
-        bounds_group.addLayer(layer_UnderConstructionAAARoutes_11);
-        map.addLayer(layer_UnderConstructionAAARoutes_11);
-        function pop_ExistingAAARoutes_12(feature, layer) {
+        bounds_group.addLayer(layer_UnderConstructionAAARoutes_12);
+        map.addLayer(layer_UnderConstructionAAARoutes_12);
+        function pop_ExistingAAARoutes_13(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1287,9 +1447,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ExistingAAARoutes_12_0() {
+        function style_ExistingAAARoutes_13_0() {
             return {
-                pane: 'pane_ExistingAAARoutes_12',
+                pane: 'pane_ExistingAAARoutes_13',
                 opacity: 1,
                 color: 'rgba(66,189,0,1.0)',
                 dashArray: '',
@@ -1300,20 +1460,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ExistingAAARoutes_12');
-        map.getPane('pane_ExistingAAARoutes_12').style.zIndex = 412;
-        map.getPane('pane_ExistingAAARoutes_12').style['mix-blend-mode'] = 'normal';
-        var layer_ExistingAAARoutes_12 = new L.geoJson(json_ExistingAAARoutes_12, {
+        map.createPane('pane_ExistingAAARoutes_13');
+        map.getPane('pane_ExistingAAARoutes_13').style.zIndex = 413;
+        map.getPane('pane_ExistingAAARoutes_13').style['mix-blend-mode'] = 'normal';
+        var layer_ExistingAAARoutes_13 = new L.geoJson(json_ExistingAAARoutes_13, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ExistingAAARoutes_12',
-            layerName: 'layer_ExistingAAARoutes_12',
-            pane: 'pane_ExistingAAARoutes_12',
-            onEachFeature: pop_ExistingAAARoutes_12,
-            style: style_ExistingAAARoutes_12_0,
+            dataVar: 'json_ExistingAAARoutes_13',
+            layerName: 'layer_ExistingAAARoutes_13',
+            pane: 'pane_ExistingAAARoutes_13',
+            onEachFeature: pop_ExistingAAARoutes_13,
+            style: style_ExistingAAARoutes_13_0,
         });
-        bounds_group.addLayer(layer_ExistingAAARoutes_12);
-        map.addLayer(layer_ExistingAAARoutes_12);
+        bounds_group.addLayer(layer_ExistingAAARoutes_13);
+        map.addLayer(layer_ExistingAAARoutes_13);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1325,7 +1485,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_12.png" /> Existing AAA Routes': layer_ExistingAAARoutes_12,'<img src="legend/UnderConstructionAAARoutes_11.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_11,'<img src="legend/FundedAAARoutes_10.png" /> Funded AAA Routes': layer_FundedAAARoutes_10,'<img src="legend/OtherProposedAAAApprox_9.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_9,'<img src="legend/PedestrianandTransitOrientedStreets_8.png" /> Pedestrian and Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_8,'<img src="legend/ExistingAAAMask_7.png" /> Existing AAA Mask': layer_ExistingAAAMask_7,'<img src="legend/OtherAAAMask_6.png" /> Other AAA Mask': layer_OtherAAAMask_6,'<img src="legend/PedestrianStreetsMask_5.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_13.png" /> Existing AAA Routes': layer_ExistingAAARoutes_13,'<img src="legend/UnderConstructionAAARoutes_12.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_12,'<img src="legend/FundedAAARoutes_11.png" /> Funded AAA Routes': layer_FundedAAARoutes_11,'<img src="legend/OtherProposedAAAApprox_10.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_10,'<img src="legend/PedestrianandTransitOrientedStreets_9.png" /> Pedestrian and Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_9,'<img src="legend/ExistingAAAMask_8.png" /> Existing AAA Mask': layer_ExistingAAAMask_8,'<img src="legend/OtherAAAMask_7.png" /> Other AAA Mask': layer_OtherAAAMask_7,'<img src="legend/PedestrianStreetsMask_6.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_6,'Schools<br /><table><tr><td style="text-align: center;"><img src="legend/Schools_5_Undefined0.png" /></td><td>Undefined</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_ElementarySchool1.png" /></td><td>Elementary School</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_MiddleSchool2.png" /></td><td>Middle School</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_HighSchoolPublic3.png" /></td><td>High School, Public</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_PrivateSchool4.png" /></td><td>Private School</td></tr></table>': layer_Schools_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,}).addTo(map);
         setBounds();
         </script>
     </body>
