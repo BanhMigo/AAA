@@ -36,7 +36,6 @@
         <script src="js/leaflet-measure.js"></script>
         <script src="data/CoAMask_1.js"></script>
         <script src="data/MARTARailLines_2.js"></script>
-        <script src="data/BeltLineOverlayDistrict_3.js"></script>
         <script src="data/Parks_3.js"></script>
         <script src="data/ConventialLane_4.js"></script>
         <script src="data/Schools_5.js"></script>
@@ -234,90 +233,6 @@
         });
         bounds_group.addLayer(layer_MARTARailLines_2);
         map.addLayer(layer_MARTARailLines_2);
-                function pop_BeltLineOverlayDistrict_3(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['FID'] !== null ? autolinker.link(feature.properties['FID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['DISTRICT'] !== null ? autolinker.link(feature.properties['DISTRICT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['DESCRIPTIO'] !== null ? autolinker.link(feature.properties['DESCRIPTIO'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LABEL'] !== null ? autolinker.link(feature.properties['LABEL'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SPI'] !== null ? autolinker.link(feature.properties['SPI'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SHAPE_Leng'] !== null ? autolinker.link(feature.properties['SHAPE_Leng'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['GLOBALID'] !== null ? autolinker.link(feature.properties['GLOBALID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Shape__Area'] !== null ? autolinker.link(feature.properties['Shape__Area'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Shape__Length'] !== null ? autolinker.link(feature.properties['Shape__Length'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_BeltLineOverlayDistrict_3_0() {
-            return {
-                pane: 'pane_BeltLineOverlayDistrict_3',
-                opacity: 0.33,
-                color: 'rgba(110,110,110,0.2)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 3.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(97,146,88,0.2)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_BeltLineOverlayDistrict_3');
-        map.getPane('pane_BeltLineOverlayDistrict_3').style.zIndex = 403;
-        map.getPane('pane_BeltLineOverlayDistrict_3').style['mix-blend-mode'] = 'normal';
-        var layer_BeltLineOverlayDistrict_3 = new L.geoJson(json_BeltLineOverlayDistrict_3, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_BeltLineOverlayDistrict_3',
-            layerName: 'layer_BeltLineOverlayDistrict_3',
-            pane: 'pane_BeltLineOverlayDistrict_3',
-            onEachFeature: pop_BeltLineOverlayDistrict_3,
-            style: style_BeltLineOverlayDistrict_3_0,
-        });
-        bounds_group.addLayer(layer_BeltLineOverlayDistrict_3);
-        map.addLayer(layer_BeltLineOverlayDistrict_3);
         function pop_Parks_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
