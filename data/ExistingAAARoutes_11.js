@@ -1,6 +1,6 @@
-var json_ExistingAAAMask_7 = {
+var json_ExistingAAARoutes_11 = {
 "type": "FeatureCollection",
-"name": "ExistingAAAMask_7",
+"name": "ExistingAAARoutes_11",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "OBJECTID": 71.0, "FACILITY_T": "Hard Surface Multi-Use Path", "BUILT_BY": "PATH", "NAME": "Anderson Park", "ON_OFFROAD": "Off", "BOTH_SIDE": "Off", "SOURCE": "Existing", "STATUS": "Existing", "YEAR_INSTA": 2008.0, "PROTECTION": "High", "LENGTH_MIL": 51.49908, "NOTES": null, "Shape__Len": 51.49908, "FACTYPE1": "Hard Surface Multi-Use Path", "Source_OG": "Existing", "Fac_Alias": "AAA" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -84.455512635486272, 33.759700579227896 ], [ -84.455507020640155, 33.760164897267828 ] ] ] } },
