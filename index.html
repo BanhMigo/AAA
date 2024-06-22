@@ -40,13 +40,13 @@
         <script src="data/ConventialLane_4.js"></script>
         <script src="data/Schools_5.js"></script>
         <script src="data/PedestrianStreetsMask_6.js"></script>
-        <script src="data/OtherAAAMask_7.js"></script>
-        <script src="data/ExistingAAAMask_8.js"></script>
+        <script src="data/OtherAAAMask_6.js"></script>
+        <script src="data/ExistingAAAMask_7.js"></script>
         <script src="data/PedestrianandTransitOrientedStreets_9.js"></script>
-        <script src="data/OtherProposedAAAApprox_10.js"></script>
-        <script src="data/FundedAAARoutes_11.js"></script>
-        <script src="data/UnderConstructionAAARoutes_12.js"></script>
-        <script src="data/ExistingAAARoutes_13.js"></script>
+        <script src="data/OtherProposedAAAApprox_8.js"></script>
+        <script src="data/FundedAAARoutes_9.js"></script>
+        <script src="data/UnderConstructionAAARoutes_10.js"></script>
+        <script src="data/ExistingAAARoutes_11.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -813,7 +813,7 @@
             style: style_PedestrianStreetsMask_6_0,
         });
         bounds_group.addLayer(layer_PedestrianStreetsMask_6);
-        function pop_OtherAAAMask_7(feature, layer) {
+        function pop_OtherAAAMask_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -891,9 +891,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_OtherAAAMask_7_0() {
+        function style_OtherAAAMask_6_0() {
             return {
-                pane: 'pane_OtherAAAMask_7',
+                pane: 'pane_OtherAAAMask_6',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
@@ -904,21 +904,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_OtherAAAMask_7');
-        map.getPane('pane_OtherAAAMask_7').style.zIndex = 407;
-        map.getPane('pane_OtherAAAMask_7').style['mix-blend-mode'] = 'normal';
-        var layer_OtherAAAMask_7 = new L.geoJson(json_OtherAAAMask_7, {
+        map.createPane('pane_OtherAAAMask_6');
+        map.getPane('pane_OtherAAAMask_6').style.zIndex = 407;
+        map.getPane('pane_OtherAAAMask_6').style['mix-blend-mode'] = 'normal';
+        var layer_OtherAAAMask_6 = new L.geoJson(json_OtherAAAMask_6, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_OtherAAAMask_7',
-            layerName: 'layer_OtherAAAMask_7',
-            pane: 'pane_OtherAAAMask_7',
-            onEachFeature: pop_OtherAAAMask_7,
-            style: style_OtherAAAMask_7_0,
+            dataVar: 'json_OtherAAAMask_6',
+            layerName: 'layer_OtherAAAMask_6',
+            pane: 'pane_OtherAAAMask_6',
+            onEachFeature: pop_OtherAAAMask_6,
+            style: style_OtherAAAMask_6_0,
         });
-        bounds_group.addLayer(layer_OtherAAAMask_7);
-        map.addLayer(layer_OtherAAAMask_7);
-        function pop_ExistingAAAMask_8(feature, layer) {
+        bounds_group.addLayer(layer_OtherAAAMask_6);
+        map.addLayer(layer_OtherAAAMask_6);
+        function pop_ExistingAAAMask_7(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -984,9 +984,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ExistingAAAMask_8_0() {
+        function style_ExistingAAAMask_7_0() {
             return {
-                pane: 'pane_ExistingAAAMask_8',
+                pane: 'pane_ExistingAAAMask_7',
                 opacity: 1,
                 color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
@@ -997,20 +997,20 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_ExistingAAAMask_8');
-        map.getPane('pane_ExistingAAAMask_8').style.zIndex = 408;
-        map.getPane('pane_ExistingAAAMask_8').style['mix-blend-mode'] = 'normal';
-        var layer_ExistingAAAMask_8 = new L.geoJson(json_ExistingAAAMask_8, {
+        map.createPane('pane_ExistingAAAMask_7');
+        map.getPane('pane_ExistingAAAMask_7').style.zIndex = 408;
+        map.getPane('pane_ExistingAAAMask_7').style['mix-blend-mode'] = 'normal';
+        var layer_ExistingAAAMask_7 = new L.geoJson(json_ExistingAAAMask_7, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_ExistingAAAMask_8',
-            layerName: 'layer_ExistingAAAMask_8',
-            pane: 'pane_ExistingAAAMask_8',
-            onEachFeature: pop_ExistingAAAMask_8,
-            style: style_ExistingAAAMask_8_0,
+            dataVar: 'json_ExistingAAAMask_7',
+            layerName: 'layer_ExistingAAAMask_7',
+            pane: 'pane_ExistingAAAMask_7',
+            onEachFeature: pop_ExistingAAAMask_7,
+            style: style_ExistingAAAMask_7_0,
         });
-        bounds_group.addLayer(layer_ExistingAAAMask_8);
-        map.addLayer(layer_ExistingAAAMask_8);
+        bounds_group.addLayer(layer_ExistingAAAMask_7);
+        map.addLayer(layer_ExistingAAAMask_7);
         function pop_PedestrianandTransitOrientedStreets_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -1061,7 +1061,7 @@
             style: style_PedestrianandTransitOrientedStreets_9_0,
         });
         bounds_group.addLayer(layer_PedestrianandTransitOrientedStreets_9);
-        function pop_OtherProposedAAAApprox_10(feature, layer) {
+        function pop_OtherProposedAAAApprox_8(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1139,9 +1139,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_OtherProposedAAAApprox_10_0() {
+        function style_OtherProposedAAAApprox_8_0() {
             return {
-                pane: 'pane_OtherProposedAAAApprox_10',
+                pane: 'pane_OtherProposedAAAApprox_8',
                 opacity: 1,
                 color: 'rgba(159,159,159,1.0)',
                 dashArray: '',
@@ -1152,21 +1152,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_OtherProposedAAAApprox_10');
-        map.getPane('pane_OtherProposedAAAApprox_10').style.zIndex = 410;
-        map.getPane('pane_OtherProposedAAAApprox_10').style['mix-blend-mode'] = 'normal';
-        var layer_OtherProposedAAAApprox_10 = new L.geoJson(json_OtherProposedAAAApprox_10, {
+        map.createPane('pane_OtherProposedAAAApprox_8');
+        map.getPane('pane_OtherProposedAAAApprox_8').style.zIndex = 410;
+        map.getPane('pane_OtherProposedAAAApprox_8').style['mix-blend-mode'] = 'normal';
+        var layer_OtherProposedAAAApprox_8 = new L.geoJson(json_OtherProposedAAAApprox_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_OtherProposedAAAApprox_10',
-            layerName: 'layer_OtherProposedAAAApprox_10',
-            pane: 'pane_OtherProposedAAAApprox_10',
-            onEachFeature: pop_OtherProposedAAAApprox_10,
-            style: style_OtherProposedAAAApprox_10_0,
+            dataVar: 'json_OtherProposedAAAApprox_8',
+            layerName: 'layer_OtherProposedAAAApprox_8',
+            pane: 'pane_OtherProposedAAAApprox_8',
+            onEachFeature: pop_OtherProposedAAAApprox_8,
+            style: style_OtherProposedAAAApprox_8_0,
         });
-        bounds_group.addLayer(layer_OtherProposedAAAApprox_10);
-        map.addLayer(layer_OtherProposedAAAApprox_10);
-        function pop_FundedAAARoutes_11(feature, layer) {
+        bounds_group.addLayer(layer_OtherProposedAAAApprox_8);
+        map.addLayer(layer_OtherProposedAAAApprox_8);
+        function pop_FundedAAARoutes_9(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1244,9 +1244,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_FundedAAARoutes_11_0() {
+        function style_FundedAAARoutes_9_0() {
             return {
-                pane: 'pane_FundedAAARoutes_11',
+                pane: 'pane_FundedAAARoutes_9',
                 opacity: 1,
                 color: 'rgba(165,3,225,1.0)',
                 dashArray: '',
@@ -1257,21 +1257,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_FundedAAARoutes_11');
-        map.getPane('pane_FundedAAARoutes_11').style.zIndex = 411;
-        map.getPane('pane_FundedAAARoutes_11').style['mix-blend-mode'] = 'normal';
-        var layer_FundedAAARoutes_11 = new L.geoJson(json_FundedAAARoutes_11, {
+        map.createPane('pane_FundedAAARoutes_9');
+        map.getPane('pane_FundedAAARoutes_9').style.zIndex = 411;
+        map.getPane('pane_FundedAAARoutes_9').style['mix-blend-mode'] = 'normal';
+        var layer_FundedAAARoutes_9 = new L.geoJson(json_FundedAAARoutes_9, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_FundedAAARoutes_11',
-            layerName: 'layer_FundedAAARoutes_11',
-            pane: 'pane_FundedAAARoutes_11',
-            onEachFeature: pop_FundedAAARoutes_11,
-            style: style_FundedAAARoutes_11_0,
+            dataVar: 'json_FundedAAARoutes_9',
+            layerName: 'layer_FundedAAARoutes_9',
+            pane: 'pane_FundedAAARoutes_9',
+            onEachFeature: pop_FundedAAARoutes_9,
+            style: style_FundedAAARoutes_9_0,
         });
-        bounds_group.addLayer(layer_FundedAAARoutes_11);
-        map.addLayer(layer_FundedAAARoutes_11);
-        function pop_UnderConstructionAAARoutes_12(feature, layer) {
+        bounds_group.addLayer(layer_FundedAAARoutes_9);
+        map.addLayer(layer_FundedAAARoutes_9);
+        function pop_UnderConstructionAAARoutes_10(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1349,9 +1349,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_UnderConstructionAAARoutes_12_0() {
+        function style_UnderConstructionAAARoutes_10_0() {
             return {
-                pane: 'pane_UnderConstructionAAARoutes_12',
+                pane: 'pane_UnderConstructionAAARoutes_10',
                 opacity: 1,
                 color: 'rgba(253,166,0,1.0)',
                 dashArray: '',
@@ -1362,21 +1362,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_UnderConstructionAAARoutes_12');
-        map.getPane('pane_UnderConstructionAAARoutes_12').style.zIndex = 412;
-        map.getPane('pane_UnderConstructionAAARoutes_12').style['mix-blend-mode'] = 'normal';
-        var layer_UnderConstructionAAARoutes_12 = new L.geoJson(json_UnderConstructionAAARoutes_12, {
+        map.createPane('pane_UnderConstructionAAARoutes_10');
+        map.getPane('pane_UnderConstructionAAARoutes_10').style.zIndex = 412;
+        map.getPane('pane_UnderConstructionAAARoutes_10').style['mix-blend-mode'] = 'normal';
+        var layer_UnderConstructionAAARoutes_10 = new L.geoJson(json_UnderConstructionAAARoutes_10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_UnderConstructionAAARoutes_12',
-            layerName: 'layer_UnderConstructionAAARoutes_12',
-            pane: 'pane_UnderConstructionAAARoutes_12',
-            onEachFeature: pop_UnderConstructionAAARoutes_12,
-            style: style_UnderConstructionAAARoutes_12_0,
+            dataVar: 'json_UnderConstructionAAARoutes_10',
+            layerName: 'layer_UnderConstructionAAARoutes_10',
+            pane: 'pane_UnderConstructionAAARoutes_10',
+            onEachFeature: pop_UnderConstructionAAARoutes_10,
+            style: style_UnderConstructionAAARoutes_10_0,
         });
-        bounds_group.addLayer(layer_UnderConstructionAAARoutes_12);
-        map.addLayer(layer_UnderConstructionAAARoutes_12);
-        function pop_ExistingAAARoutes_13(feature, layer) {
+        bounds_group.addLayer(layer_UnderConstructionAAARoutes_10);
+        map.addLayer(layer_UnderConstructionAAARoutes_10);
+        function pop_ExistingAAARoutes_11(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -1442,9 +1442,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ExistingAAARoutes_13_0() {
+        function style_ExistingAAARoutes_11_0() {
             return {
-                pane: 'pane_ExistingAAARoutes_13',
+                pane: 'pane_ExistingAAARoutes_11',
                 opacity: 1,
                 color: 'rgba(66,189,0,1.0)',
                 dashArray: '',
@@ -1455,20 +1455,20 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_ExistingAAARoutes_13');
-        map.getPane('pane_ExistingAAARoutes_13').style.zIndex = 413;
-        map.getPane('pane_ExistingAAARoutes_13').style['mix-blend-mode'] = 'normal';
-        var layer_ExistingAAARoutes_13 = new L.geoJson(json_ExistingAAARoutes_13, {
+        map.createPane('pane_ExistingAAARoutes_11');
+        map.getPane('pane_ExistingAAARoutes_11').style.zIndex = 413;
+        map.getPane('pane_ExistingAAARoutes_11').style['mix-blend-mode'] = 'normal';
+        var layer_ExistingAAARoutes_11 = new L.geoJson(json_ExistingAAARoutes_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ExistingAAARoutes_13',
-            layerName: 'layer_ExistingAAARoutes_13',
-            pane: 'pane_ExistingAAARoutes_13',
-            onEachFeature: pop_ExistingAAARoutes_13,
-            style: style_ExistingAAARoutes_13_0,
+            dataVar: 'json_ExistingAAARoutes_11',
+            layerName: 'layer_ExistingAAARoutes_11',
+            pane: 'pane_ExistingAAARoutes_11',
+            onEachFeature: pop_ExistingAAARoutes_11,
+            style: style_ExistingAAARoutes_11_0,
         });
-        bounds_group.addLayer(layer_ExistingAAARoutes_13);
-        map.addLayer(layer_ExistingAAARoutes_13);
+        bounds_group.addLayer(layer_ExistingAAARoutes_11);
+        map.addLayer(layer_ExistingAAARoutes_11);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1480,7 +1480,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_13.png" /> Existing AAA Routes': layer_ExistingAAARoutes_13,'<img src="legend/UnderConstructionAAARoutes_12.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_12,'<img src="legend/FundedAAARoutes_11.png" /> Funded AAA Routes': layer_FundedAAARoutes_11,'<img src="legend/OtherProposedAAAApprox_10.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_10,'<img src="legend/PedestrianandTransitOrientedStreets_9.png" /> Pedestrian and Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_9,'<img src="legend/ExistingAAAMask_8.png" /> Existing AAA Mask': layer_ExistingAAAMask_8,'<img src="legend/OtherAAAMask_7.png" /> Other AAA Mask': layer_OtherAAAMask_7,'<img src="legend/PedestrianStreetsMask_6.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_6,'Schools<br /><table><tr><td style="text-align: center;"><img src="legend/Schools_5_Undefined0.png" /></td><td>Undefined</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_ElementarySchool1.png" /></td><td>Elementary School</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_MiddleSchool2.png" /></td><td>Middle School</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_HighSchoolPublic3.png" /></td><td>High School, Public</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_PrivateSchool4.png" /></td><td>Private School</td></tr></table>': layer_Schools_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/ExistingAAARoutes_11.png" /> Existing AAA Routes': layer_ExistingAAARoutes_11,'<img src="legend/UnderConstructionAAARoutes_10.png" /> Under Construction AAA Routes': layer_UnderConstructionAAARoutes_10,'<img src="legend/FundedAAARoutes_9.png" /> Funded AAA Routes': layer_FundedAAARoutes_9,'<img src="legend/OtherProposedAAAApprox_8.png" /> Other Proposed AAA Approx.': layer_OtherProposedAAAApprox_8,'<img src="legend/PedestrianandTransitOrientedStreets_9.png" /> Pedestrian and Transit Oriented Streets': layer_PedestrianandTransitOrientedStreets_9,'<img src="legend/ExistingAAAMask_7.png" /> Existing AAA Mask': layer_ExistingAAAMask_7,'<img src="legend/OtherAAAMask_6.png" /> Other AAA Mask': layer_OtherAAAMask_6,'<img src="legend/PedestrianStreetsMask_6.png" /> Pedestrian Streets Mask': layer_PedestrianStreetsMask_6,'Schools<br /><table><tr><td style="text-align: center;"><img src="legend/Schools_5_Undefined0.png" /></td><td>Undefined</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_ElementarySchool1.png" /></td><td>Elementary School</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_MiddleSchool2.png" /></td><td>Middle School</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_HighSchoolPublic3.png" /></td><td>High School, Public</td></tr><tr><td style="text-align: center;"><img src="legend/Schools_5_PrivateSchool4.png" /></td><td>Private School</td></tr></table>': layer_Schools_5,'<img src="legend/ConventialLane_4.png" /> Convential Lane': layer_ConventialLane_4,'<img src="legend/Parks_3.png" /> Parks': layer_Parks_3,'<img src="legend/MARTARailLines_2.png" /> MARTA Rail Lines': layer_MARTARailLines_2,'<img src="legend/CoAMask_1.png" /> CoA Mask': layer_CoAMask_1,"ESRI Gray (light)": layer_ESRIGraylight_0,}).addTo(map);
         setBounds();
         </script>
     </body>
